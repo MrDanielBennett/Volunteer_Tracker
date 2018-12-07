@@ -1,0 +1,15 @@
+<h1>Add a Volunteer Project!</h1>
+<div class="well">
+  <form action="/" method="post" autocomplete="off">
+    <label for="title">What is the Project name?</label>
+    <input type="text" name="title"><br>
+    <button type="submit" name="Submit" value="Create Project">Add Project</button>
+  </form>
+</div>
+
+<h2>Current Volunteer projects</h2>
+<ul>
+  <% @projects.each do |project| %>
+    <li><a href='/projects/<%= project.id %>'><%= project.title %></a></li>
+  <% end %>
+</ul>
