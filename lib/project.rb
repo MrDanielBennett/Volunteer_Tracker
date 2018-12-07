@@ -3,7 +3,7 @@ class Project
 
   def initialize(attributes)
     @title = attributes.fetch(:title)
-    @id = attributes.fetch(:id) rescue nil
+    @id = attributes.fetch(:id)
   end
 
   def save
@@ -15,22 +15,30 @@ class Project
     self.title().==(another_project.title())
   end
 
-  def self.find(id)
-    returned_projects = DB.exec("SELECT * FROM projects WHERE id = #{id};")
-    return_projects = nil
-    returned_projectas.each() do |movie|
-      title = project.fetch("title")
-      end
-    end
-
-    def self.all
-      returned_projects = DB.exec("SELECT * FROM projects;")
-      projects = []
-      returned_projects.each() do |project|
-        title = project.fetch("title")
-        id = project.fetch("id").to_i()
-        projects.push(Project.new({:title => title, :id => id}))
-      end
-      projects
-    end
+  def update(attributes)
+    @title = attributes.fetch(:title)
+    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
   end
+
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
+  end
+
+  def self.find(id)
+    results = DB.exec("SELECT * FROM projects WHERE id = #{id}")
+    title = results.first.fetch("title")
+    id = results.first.fetch("id").to_i
+    Project.new({:title => title, :id => id})
+  end
+
+  def self.all
+    returned_projects = DB.exec("SELECT * FROM projects;")
+    projects = []
+    returned_projects.each() do |project|
+      title = project.fetch("title")
+      id = project.fetch("id").to_i()
+      projects.push(Project.new({:title => title, :id => id}))
+    end
+    projects
+  end
+end
