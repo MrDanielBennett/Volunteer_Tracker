@@ -1,11 +1,4 @@
 <h3>Project Details</h3>
 <h1><%= @project.title %> </h1>
 
-<h4>Edit Project</h4>
-<h3>Update the Project:</h3>
-<form action="/project_details/<%= @project.id %>" method="post" autocomplete="off">
-  <input name="_method" type="hidden" value="patch">
-  <label for="title">Update the title of the Project?</label>
-  <input type="text" name="title" value="<%= @project.title %>"><br>
-  <button type="submit" name="button" value="Edit Project">Update</button>
-</form>
+<h4><a href='/edit_project/<%=@project.id%>'> Edit Project </a></h4>
