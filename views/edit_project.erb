@@ -6,3 +6,8 @@
   <input type="text" name="title" value="<%= @project.title %>"><br>
   <button type="submit" name="button" value="Update Project">Update</button>
 </form>
+
+<form action="/project_details/<%= @project.id %>" method="post" autocomplete="off">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" name="button" value="Delete Project">Delete</button>
+</form>

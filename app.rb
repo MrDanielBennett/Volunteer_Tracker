@@ -28,7 +28,7 @@ get ('/projects/:id') do
   erb (:project_details)
 end
 
-get ('/edit_project/:id') do
+get ('/project/:id/edit') do
   id = params[:id].to_i
   @project = Project.find(id)
   erb (:edit_project)
@@ -39,6 +39,15 @@ patch ('/project_details/:id') do
   id = params[:id].to_i
   @project = Project.find(id)
   @project.update({:title => title, :id => nil})
+  @projects = Project.all
+  @volunteers = Volunteer.all
+  erb (:index)
+end
+
+  delete ('/project_details/:id') do
+  id = params[:id].to_i
+  @project = Project.find(id)
+  @project.delete
   @projects = Project.all
   @volunteers = Volunteer.all
   erb (:index)
