@@ -13,3 +13,24 @@
     <li><a href='/projects/<%= project.id %>'><%= project.title %></a></li>
   <% end %>
 </ul>
+
+    <h4>Add New Volunteer</h4>
+    <form action="/new_volunteer" method="post">
+      <div class="form-group">
+      <input type="text" name="name" >
+
+      <label for="project_id">Project</label>
+      <select id='project_id' name='project_id' type='text'>
+        <% @projects.each() do |project| %>
+          <option value="<%= project.id %>"> <%= project.title %> </option>
+        <% end %>
+      </select>
+        <button class="btn" type="submit" name="button">Add Volunteer</button>
+    </form>
+<h2>Current Volunteers:</h2>
+
+<ul>
+  <% @volunteers.each do |volunteer| %>
+    <li><a href='/edit_volunteer/<%= volunteer.id %>'><%= volunteer.name %></a> </li>
+  <% end %>
+</ul>
