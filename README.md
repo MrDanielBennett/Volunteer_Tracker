@@ -26,7 +26,7 @@ If you have any issues or bugs arise contact me at: daniel.bennett1999@gmail.com
 
 ## Technologies Used
 
-Github, Ruby, PostGres, Sinatra,
+Github, Ruby, PostGres, Sinatra, RAW PSQL
 
 ### License
 
